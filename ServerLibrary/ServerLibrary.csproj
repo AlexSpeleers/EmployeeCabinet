@@ -18,10 +18,6 @@
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.0" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Repositories\Contracts\" />
-	  <Folder Include="Repositories\Implementations\" />
-	</ItemGroup>
-	<ItemGroup>
 	  <ProjectReference Include="..\BaseLibrary\BaseLibrary.csproj" />
 	</ItemGroup>
 </Project>
