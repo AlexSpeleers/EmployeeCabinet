@@ -1,0 +1,62 @@
+﻿@using Client.ApplicationStates
+@implements IDisposable
+@inject DepartmentState departmentState
+
+@if (departmentState.ShowGeneralDepartment)
+{
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="float-start">General Department</h4>
+                        <button class="btn btn-outline-success float-end" @onclick="OpenDialog"><i class="bi bi-plus-circle-dotted"></i>Add Department</button>
+                    </div>
+                    <div class="card-header">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thread>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Handle</th>
+                                    </tr>
+                                </thread>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <th>Mark</th>
+                                        <th>Otto</th>
+                                        <th>mdo</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <th>Jacob</th>
+                                        <th>Thornton</th>
+                                        <th>fat</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <th colspan="2">Larry the Bird</th>
+                                        <th>twitter</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<GeneralDepartmentDialog @ref="generalDepartmentDialog"/>
+@code
+{
+    GeneralDepartmentDialog? generalDepartmentDialog;
+    GeneralDepartmentDTO Department = new();
+
+    protected override void OnInitialized() => departmentState.GeneralDepartmentAction += StateHasChanged;
+    public void Dispose() => departmentState.GeneralDepartmentAction -= StateHasChanged;
+    private void OpenDialog() => generalDepartmentDialog?.OpenDialog();
+}
